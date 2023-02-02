@@ -22,8 +22,9 @@ jobs:
       - run: LICENSE_KEY=${{ secrets.LICENSE_KEY }} LICENSE_EMAIL=${{ secrets.LICENSE_EMAIL }} npx figma-tokens-transformer transform
 
       - name: Commit & Push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Generated new token files
-          branch: master
-
+        run: |
+          git config user.name muzzamilr
+          git config user.email mmuzzamil90@gmail.com
+          git add .
+          git commit -m "generated"
+          git push
