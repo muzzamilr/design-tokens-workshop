@@ -22,11 +22,8 @@ jobs:
       - run: LICENSE_KEY=${{ secrets.LICENSE_KEY }} LICENSE_EMAIL=${{ secrets.LICENSE_EMAIL }} npx figma-tokens-transformer transform
 
       - name: Commit & Push changes
-        uses: github-actions-x/commit@v2.9
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github-token: ${{ secrets.COMMIT_TOKEN }}
-          push-branch: master
-          commit-message: Generated new tokens
-          name: muzzamilr
-          email: mmuzzamil90@gmail.com
+          commit_message: Generated new token files
+          branch: master
 
