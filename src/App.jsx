@@ -1,34 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-
+import {
+	Button,
+	Select,
+	Radio,
+	Checkbox,
+	Input,
+	ConfigProvider,
+	Space,
+	Layout,
+	Switch,
+	Calendar,
+} from "antd";
+import { useState } from "react";
+import * as lightTheme from "./ant-tokens/light.json";
+import * as darkTheme from "./ant-tokens/dark.json";
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+	const [dark, setDark] = useState(false);
+	const handleChecked = (checked) => {
+		if (checked) setDark(true);
+		else setDark(false);
+	};
+	return (
+		<ConfigProvider
+			theme={{
+				// algorithm: dark ? theme.darkAlgorithm : theme.lightAlgorithm,
+				token: dark ? darkTheme : lightTheme,
+			}}
+		>
+			<Layout
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					height: "100vh",
+				}}
+			>
+				<Space direction="vertical" size={10}>
+					<Switch
+						checkedChildren="Dark"
+						unCheckedChildren="Light"
+						onChange={handleChecked}
+					/>
+					<Button>Button</Button>
+					<Checkbox>Checkbox</Checkbox>
+					<Radio>Radio</Radio>
+					<Select
+						placeholder="Select"
+						options={[{ label: "Select", value: "Option" }]}
+					/>
+					<Input placeholder="input" />
+					<Calendar fullscreen={false} style={{ width: "300px" }} />
+				</Space>
+			</Layout>
+		</ConfigProvider>
+	);
 }
 
-export default App
+export default App;

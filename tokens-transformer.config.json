@@ -1,0 +1,9 @@
+{
+  "version": 5,
+  "source": {
+    "tokensFile": "src/tokens/tokens.json"
+  },
+  "target": {
+    "jsonsDir": "src/ant-tokens"
+  }
+}
