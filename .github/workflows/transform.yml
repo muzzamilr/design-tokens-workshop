@@ -26,5 +26,5 @@ jobs:
           git config --global user.name muzzamilr
           git config --global user.email "muzzamilr@users.noreply.github.com"
           git add .
-          git commit -m Generated new tokens
+          git commit -m "Generated new tokens"
           git push
