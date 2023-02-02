@@ -1,0 +1,23 @@
+name: Tranform Tokens
+
+on:
+  push:
+    paths:
+      - 'src/tokens/**'
+    branches:
+      - master
+
+jobs:
+  transform_tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm ci
+      - run: LICENSE_KEY=${{ secrets.LICENSE_KEY }} LICENSE_EMAIL=${{ secrets.LICENSE_EMAIL }} npx figma-tokens-transformer transform
+
