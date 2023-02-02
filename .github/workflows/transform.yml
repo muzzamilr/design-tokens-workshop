@@ -21,16 +21,11 @@ jobs:
       - run: npm ci
       - run: LICENSE_KEY=${{ secrets.LICENSE_KEY }} LICENSE_EMAIL=${{ secrets.LICENSE_EMAIL }} npx figma-tokens-transformer transform
 
-      - name: Setup Git
-        uses: actions/setup-git@v2
+      - name: Commit & Push changes
+        uses: Andro999b/push@v1.3
         with:
-          git_user_email: mmuzzamil90@gmail.com
-          git_user_name: muzzamilr
+          github_token: ${{ secrets.COMMIT_TOKEN }}
+          author_email: mmuzzamil90@gmail.com
+          author_name: muzzamilr
+          message: Generated new tokens
 
-      - name: Commit and push changes
-        run: |
-          git add .
-          git commit -m "Generated new tokens file"
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.COMMIT_TOKEN }}
