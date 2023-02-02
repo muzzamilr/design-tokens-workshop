@@ -22,7 +22,7 @@ jobs:
       - run: LICENSE_KEY=${{ secrets.LICENSE_KEY }} LICENSE_EMAIL=${{ secrets.LICENSE_EMAIL }} npx figma-tokens-transformer transform
 
       - name: Commit and push changes
-        uses: actions/github-script@0.9.1
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.COMMIT_TOKEN }}
           script: |
@@ -30,4 +30,4 @@ jobs:
             git config --global user.name "muzzamilr"
             git add .
             git commit -m "Generated new token files"
-            git push
+            git push origin master
