@@ -13,16 +13,14 @@ import {
 import { useState } from "react";
 import * as lightTheme from "./ant-tokens/light.json";
 import * as darkTheme from "./ant-tokens/dark.json";
-import Icon, { BugOutlined } from "@ant-design/icons";
-import { theme } from "antd";
-const { useToken } = theme;
+import { ButtonMod } from "./button";
 function App() {
 	const [dark, setDark] = useState(false);
+	const [startDate, setStartDate] = useState(new Date());
 	const handleChecked = (checked) => {
 		if (checked) setDark(true);
 		else setDark(false);
 	};
-	const { token } = useToken();
 	return (
 		<ConfigProvider
 			theme={{
@@ -40,24 +38,27 @@ function App() {
 			>
 				<Space direction="vertical" size={10}>
 					<Switch
-						checkedChildren="Dark"
-						unCheckedChildren="Light"
+						checkedChildren="Light"
+						unCheckedChildren="Dark"
 						onChange={handleChecked}
 					/>
 					<Button>Button</Button>
+					<ButtonMod />
 					<Checkbox>Checkbox</Checkbox>
 					<Radio>Radio</Radio>
 					<Select
 						placeholder="Select"
 						options={[{ label: "Select", value: "Option" }]}
 					/>
-					<Input placeholder="Input" />
 					<Calendar fullscreen={false} style={{ width: "300px" }} />
 					<Input
-						prefix={<MsgSvg color={token.colorPrimaryBgHover} />}
+						prefix={
+							<MsgSvg
+								color={dark ? darkTheme.colorPrimary : lightTheme.colorPrimary}
+							/>
+						}
 						placeholder={"Input"}
 					/>
-					<Input placeholder="Olivia" />
 				</Space>
 			</Layout>
 		</ConfigProvider>
