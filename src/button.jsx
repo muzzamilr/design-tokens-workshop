@@ -1,4 +1,5 @@
 import { Button, ConfigProvider, theme } from "antd";
+import { Child } from "./child";
 const { useToken } = theme;
 export const ButtonMod = () => {
   const { token } = useToken();
@@ -14,9 +15,16 @@ export const ButtonMod = () => {
         },
       }}
     >
-      <Button size="middle" style={{ borderRadius: token.borderRadiusXS }}>
+      <Button
+        size="middle"
+        style={{
+          borderRadius: token.borderRadiusXS,
+          color: token.colorPrimary,
+        }}
+      >
         Button
       </Button>
+      <Child />
     </ConfigProvider>
   );
 };
