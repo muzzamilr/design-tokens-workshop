@@ -217,6 +217,8 @@
   "tooltipBg": "#424242",
   "segmentedBgColorSelected": "#1f1f1f",
   "segmentedGroupBg": "#000000",
+  "button.background.primary": "#096ff9",
+  "button.background.": "#154ef4",
   "fontFamily": "IBM Plex Mono",
   "fontSize": 12,
   "lineWidth": 1,

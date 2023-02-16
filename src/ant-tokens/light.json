@@ -129,6 +129,8 @@
   "Teal.8": "#005769",
   "Teal.9": "#003542",
   "Teal.10": "#00161c",
+  "button.background.primary": "#096ff9",
+  "button.background.": "#154ef4",
   "colorTextBase": "#000",
   "colorTextLightSolid": "#ffffff",
   "colorBgBase": "#ffffff",
