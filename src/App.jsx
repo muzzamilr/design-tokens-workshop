@@ -14,9 +14,8 @@ import { useState } from "react";
 import * as lightTheme from "./ant-tokens/light.json";
 import * as darkTheme from "./ant-tokens/dark.json";
 import { ButtonMod } from "./button";
-function App() {
+const App = () => {
 	const [dark, setDark] = useState(false);
-	const [startDate, setStartDate] = useState(new Date());
 	const handleChecked = (checked) => {
 		if (checked) setDark(true);
 		else setDark(false);
@@ -63,7 +62,7 @@ function App() {
 			</Layout>
 		</ConfigProvider>
 	);
-}
+};
 const MsgSvg = ({ color }) => (
 	<svg
 		width="16"
